@@ -16,11 +16,15 @@ export default function AdminDashboard() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterDate, setFilterDate] = useState("all");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [password] = useState("");
+  const [password, setPassword] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [apiUrl, setApiUrl] = useState("http://localhost:3000");
-  const [apiInput, setApiInput] = useState("http://localhost:3000");
+  const [apiUrl, setApiUrl] = useState(
+    "https://royal-fox-backend.onrender.com"
+  );
+  const [apiInput, setApiInput] = useState(
+    "https://royal-fox-backend.onrender.com"
+  );
   const [deletingId, setDeletingId] = useState(null);
 
   // Load login state from localStorage on mount
@@ -32,6 +36,9 @@ export default function AdminDashboard() {
       if (savedApiUrl) {
         setApiUrl(savedApiUrl);
         setApiInput(savedApiUrl);
+      } else {
+        setApiUrl("https://royal-fox-backend.onrender.com");
+        setApiInput("https://royal-fox-backend.onrender.com");
       }
     }
   }, []);
@@ -178,9 +185,12 @@ export default function AdminDashboard() {
                 type="text"
                 value={apiInput}
                 onChange={(e) => setApiInput(e.target.value)}
-                placeholder="http://localhost:3000"
+                placeholder="https://royal-fox-backend.onrender.com"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
+              <p className="text-xs text-gray-500 mt-1">
+                Default: https://royal-fox-backend.onrender.com
+              </p>
             </div>
 
             <div>
